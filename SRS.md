@@ -12,7 +12,7 @@
 
 **Program:** AI & Data Science  
 **Semester:** 4  
-**Course Code / Course Name:** 23AID215 - User Interface Design  
+**Course Code / Course Name:** 23AID215 - User Interface Design
 
 ---
 
