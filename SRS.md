@@ -1,86 +1,156 @@
 <div align="center">
 
-# Software Requirements Specification (SRS) for KSRTC Website
+# Software Requirements Specification (SRS) for KSRTC Bus Reservation System
 
 </div>
 
-**Team Members:**  
+*Team Members:*  
 - Kurt Sony Rebello (Roll No: am.ai.u4aid23046)  
 - R Kiran (Roll No: am.ai.u4aid23053)  
 - Salwan Subair (Roll No: am.ai.u4aid23055)  
 - Abhijith Krishna (Roll No: am.ai.u4aid23037)  
 
-**Program:** AI & Data Science  
-**Semester:** 4  
-**Course Code / Course Name:** 23AID215 - User Interface Design
+*Program:* Artificial Intelligence & Data Science  
+*Semester:* 4  
+*Course Code / Course Name:* 23AID215 – User Interface Design  
+*Title:* Software Requirements Specification (SRS) for KSRTC Bus Reservation System  
+*Date:* 25.04.2025  
+*Document Version:* Ver 1.0  
 
 ---
 
 ## 1. Introduction
 
 ### 1.1 Purpose
-This document provides a detailed specification of the software requirements for the KSRTC website, a web-based solution intended to streamline bus transport bookings for the Kerala State Road Transport Corporation. It aims to define the system’s capabilities, ensuring that it meets the needs of both customers booking tickets and administrators managing operations. The SRS serves as a foundational guide for the development team to design and implement the website effectively.
+This Software Requirements Specification (SRS) outlines the requirements for the KSRTC Bus Reservation System, a web-based platform designed to enhance the bus booking process for the Kerala State Road Transport Corporation (KSRTC). The system aims to automate tasks like seat reservations, route scheduling, staff management, ticketing, and payments, offering a user-friendly and secure experience for customers while providing administrative tools for staff and managers. This document serves as a blueprint for the development team to build the system effectively.
 
 ### 1.2 Scope
-The KSRTC website will offer a user-friendly platform for customers to register, search for bus routes, select seats, and complete bookings with integrated payment options. It will also include an administrative section to oversee bus schedules, routes, and customer bookings. Built using React, Next.js, HTML, and CSS, the website will prioritize a responsive design to accommodate various devices, ensuring accessibility and ease of use. This project focuses on creating an intuitive interface with backend integration, simulating dynamic functionalities through dynamic pages.
+The KSRTC Bus Reservation System is a full-featured platform serving customers, drivers, conductors, and administrators. It enables customers to register, browse routes, select seats, book tickets, and make payments through an intuitive interface. For staff and administrators, it provides tools to manage bus schedules, routes, employee assignments, and reservations. The system uses React, Next.js, and Tailwind CSS for a responsive, mobile-first frontend, with PostgreSQL as the backend database. The design follows a relational structure guided by an Entity Relationship (ER) diagram, supporting both dynamic frontend rendering and backend integration.
 
 ### 1.3 Definitions, Acronyms, and Abbreviations
-- "KSRTC": Kerala State Road Transport Corporation, the entity overseeing the bus transport system.  
-- "HTML": HyperText Markup Language.  
-- "CSS": Cascading Style Sheets.  
-- "React": A JavaScript library for building user interfaces.  
-- "Next.js": A React framework for server-side rendering and static site generation.  
-- "UI": User Interface, a critical focus of this project.
+- *KSRTC*: Kerala State Road Transport Corporation  
+- *CSS*: Cascading Style Sheets  
+- *React*: JavaScript library for user interfaces  
+- *Next.js*: React framework for server-side rendering and static site generation  
+- *Tailwind CSS*: Utility-first CSS framework  
+- *SRS*: Software Requirements Specification  
+- *ERD*: Entity Relationship Diagram  
+- *SQL*: Structured Query Language  
+- *PostgreSQL*: Open-source relational database  
+- *UI*: User Interface  
 
 ### 1.4 References
-- React Documentation: https://react.dev/  
-- Next.js Documentation: https://nextjs.org/docs  
+- React Documentation: [https://react.dev/](https://react.dev/)  
+- Next.js Documentation: [https://nextjs.org/docs](https://nextjs.org/docs)  
+- Tailwind CSS Documentation: [https://tailwindcss.com/docs](https://tailwindcss.com/docs)  
 
 ---
 
 ## 2. Overall Description
 
 ### 2.1 Product Perspective
-The KSRTC website is envisioned as an accessible web application that modernizes the process of booking bus tickets. It integrates key entities such as buses, routes, seats, customers, bookings, and payments into a cohesive system, providing a seamless experience for users. The ER diagram provides a reference for the data structure, ensuring alignment with a potential future database-driven system. The implementation leverages React and Next.js for a dynamic front-end design.
+The KSRTC Bus Reservation System is a modular web application built using a full-stack approach . It integrates a React-based frontend with Next.js for routing and server-side rendering, styled with Tailwind CSS, and a PostgreSQL database for data management. The system connects entities like customers, employees (drivers, conductors, managers), buses, routes, seats, reservations, payments, and login credentials into a unified platform. Below is a sample project configuration:
+
+json
+{
+  "name": "ksrtc",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.4.2",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.25.1",
+    "eslint-config-next": "14.4.2",
+    "@eslint/eslintrc": "^3.3.1",
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/postcss": "^4.0.0"
+  }
+}
+`
 
 ### 2.2 Product Functions
-The primary capabilities of the website include enabling customers to create accounts and log in securely to access booking services. Users will be able to search for routes by entering their travel origin and destination, view available buses, and choose seats based on availability. The system will also support booking confirmations and offer payment options, including cash and card payments, with a clear confirmation process. For administrators, a dedicated section will allow oversight of bus schedules, seat availability, and booking statuses, presented through dynamic pages rendered using React and Next.js.
+
+The system provides the following key features:
+
+- *User Registration and Authentication*: Secure sign-up and login with encrypted passwords (using bcrypt) and JWT-based role-specific access.
+- *Route Browsing*: Real-time route search with filters for source, destination, and schedule.
+- *Seat Reservation*: Interactive seat selection with dynamic availability updates.
+- *Bus and Staff Management*: Admin tools to assign buses, routes, drivers, and conductors.
+- *Payment Gateway Integration*: Secure payments.
+- *Analytics and Admin Oversight*: Dashboards for monitoring bookings, routes, staff, and revenue.
 
 ### 2.3 User Characteristics
-The website caters to two main user groups. Customers, the primary users, are expected to have basic internet skills and will interact with the system to book tickets. Administrators, representing KSRTC staff, will use the system to monitor and manage operational details, requiring an interface that is straightforward and efficient.
+
+- *Customers*: Need an easy-to-use interface for booking and payments; basic internet skills required.
+- *Employees (Drivers, Conductors)*: Access schedules and assignments via a simple interface.
+- *Administrators (Managers)*: Manage routes, schedules, buses, employees, and analytics with full control.
 
 ### 2.4 Constraints
-Development incorporates React and Next.js alongside CSS, as mandated by the course requirements, enabling a dynamic yet static-compatible implementation. The website must function effectively across major browsers such as Chrome and Firefox and adapt to different screen sizes for a consistent experience.
+
+- Frontend must use React, Next.js, and Tailwind CSS.
+- Backend must use PostgreSQL with strict data constraints.
+- Secure HTTPS endpoints required, targeting Chrome and Firefox.
 
 ---
 
 ## 3. Specific Requirements
 
 ### 3.1 Functional Requirements
-The KSRTC website will feature a navigation system accessible from all pages, linking to essential sections like home, route search, booking management, and contact information, implemented using React components and Next.js routing. A registration page will collect user details such as first name, last name, address, phone numbers, and email to create unique customer profiles, as inspired by the ER diagram. The route search functionality will display available travel options by referencing routes (source, destination, distance), including bus details (registration number, type, capacity) and associated seats (seat number, reservation status). A seat selection interface will allow users to choose seats based on availability. Booking pages will guide users through reserving seats and confirming their travel plans, storing details like booking date, customer, bus, route, seat, and payment information. Payment pages will present options for completing transactions, supporting both cash and card payments, capturing details like amount, payment date, and payment type. An admin section will simulate management tasks, such as viewing route schedules, seat availability, and booking summaries, using pre-designed layouts within React components.
+
+- *Authentication System*: JWT-based login for customers, employees, and managers.
+- *Real-Time Reservation Engine*: Manages bookings with concurrent validation.
+- *Seat Availability Algorithm*: Tracks seat status efficiently in PostgreSQL.
+- *Route Management*: UI for scheduling and mapping buses to routes.
+- *Role-Based Dashboards*: Custom UIs based on user roles.
+- *User Registration*: Collects customer details for unique profiles.
+- *Booking and Payment*: Guides users through seat booking and payment options.
+- *Ticket Generation*: Creates PDF tickets with booking details.
+- *Navigation System*: Links all key sections using React and Next.js.
 
 ### 3.2 Non-Functional Requirements
-The website must perform efficiently, with pages rendering in less time on a standard internet connection, leveraging Next.js server-side rendering and static generation capabilities. Usability is a priority, ensuring that navigation and interactions are intuitive for all users. The design will incorporate accessibility features, such as clear text, logical structure, and semantic HTML, to support diverse audiences, including those using screen readers.
+
+- *Performance*: Sub-1s page loads with lazy loading and server-side rendering.
+- *Availability*: 99.9% uptime goal.
+- *Usability*: Simple, consistent design for all users.
 
 ### 3.3 Design Constraints
-Visually, the website will reflect an identity through a color scheme, paired with readable, web-safe fonts, styled using CSS within a React and Next.js framework. The layout will emphasize a minimalist design with simplicity and consistency, adhering to user interface design principles taught in the course.
+
+- Mobile-first design with Tailwind CSS styling.
+- Reusable React components with hooks.
+- PostgreSQL tables with strict constraints (e.g., NOT NULL, UNIQUE).
 
 ---
 
 ## 4. Appendices
 
-### 4.1 Assumptions
-This project assumes that users have reliable internet access and modern browsers to interact with the website. The website does not require server-side processing at this stage, as it focuses on front-end development with simulated backend integration.
+### 4.1 Assumptions and Dependencies
+
+- Users have stable internet and modern browsers.
+- PostgreSQL hosted on a cloud platform (e.g., Supabase).
+- Payment gateways support required currency.
+- External libraries kept updated for security.
+- State management via React Context API or Redux.
 
 ### 4.2 User Screens
-The main user screens include:  
-- Home Page: Displays an overview of the KSRTC website with navigation links.  
-- Route Search Page: Allows users to input source and destination to view available buses.  
-- Seat Selection Page: Displays available seats for a selected bus.  
-- Booking Page: Guides users through the booking confirmation process.  
-- Payment Page: Offers options for cash or card payments.  
-- Admin Dashboard: Simulates management tasks like viewing schedules and bookings.  
-User interface sketches for these screens will be provided separately.
+
+- *Home Page*: System overview and navigation.
+- *Route Search Page*: Search buses by source and destination.
+- *Seat Selection Page*: Displays available seats.
+- *Booking Page*: Confirms reservations.
+- *Payment Page*: Processes payments securely.
+- *Admin Dashboard*: Manages schedules, buses, and staff.
 
 ### 4.3 Additional Considerations
-A key aspect of the project is its reliance on a relational data structure, as referenced in the ER diagram. The structure includes entities like customers (first name, last name, address, phone numbers, email), buses (registration number, type, capacity), routes (source, destination, distance), seats (seat number, reservation status), bookings (booking date, customer, bus, route, seat, payment), and payments (amount, payment date, type, with subtypes for cash and card payments). This structure informs the design of forms and displays, ensuring alignment with realistic booking workflows.
+
+The system relies on a relational data structure with entities like customers, employees, buses, routes, seats, reservations, and payments. This structure supports realistic booking workflows and aligns with the ER diagram, guiding the design of forms, displays, and database models.
+
+---
