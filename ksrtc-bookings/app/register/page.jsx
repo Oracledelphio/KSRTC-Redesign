@@ -40,31 +40,50 @@ export default function RegisterPage() {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError("")
+  e.preventDefault();
+  setError("");
 
-    // Validation
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match")
-      return
-    }
-
-    if (!agreeTerms) {
-      setError("Please agree to the Terms and Conditions")
-      return
-    }
-
-    setIsLoading(true)
-
-    try {
-      await register(formData)
-      router.push("/profile")
-    } catch (err) {
-      setError(err.message || "Registration failed. Please try again.")
-    } finally {
-      setIsLoading(false)
-    }
+  // Basic validation
+  if (formData.password !== formData.confirmPassword) {
+    setError("Passwords do not match");
+    return;
   }
+
+  if (!agreeTerms) {
+    setError("Please agree to the Terms and Conditions");
+    return;
+  }
+
+  setIsLoading(true);
+
+  try {
+    const response = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        password: formData.password,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Registration failed");
+    }
+
+    router.push("/login");
+  } catch (err) {
+    setError(err.message || "Registration failed. Please try again.");
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   const handleGoogleRegister = () => {
     // In a real app, this would integrate with Google OAuth
