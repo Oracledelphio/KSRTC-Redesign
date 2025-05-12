@@ -43,11 +43,11 @@ export function SeatSelector({ totalSeats, availableSeats, onSeatSelect, selecte
       while (occupied.length < unavailableCount && attempts < 100) {
         attempts++
         // Use busId in the calculation to make it deterministic
-        const rowIndex = (busIdSeed + attempts * 7) % 4
-        const colIndex = (busIdSeed + attempts * 13) % 10
+        const rowIndex = (busIdSeed + attempts * 7) % 4 // 4 rows: A to D
+        const colIndex = (busIdSeed + attempts * 13) % 11 // 11 columns: 1 to 11
 
         const row = String.fromCharCode(65 + rowIndex) // A to D
-        const col = colIndex + 1 // 1 to 10
+        const col = colIndex + 1 // 1 to 11
         const seat = `${row}${col}`
 
         if (!occupied.includes(seat) && !selectedSeatsSet.has(seat)) {
@@ -79,53 +79,117 @@ export function SeatSelector({ totalSeats, availableSeats, onSeatSelect, selecte
   }
 
   const renderSeats = () => {
-    const rows = ["A", "B", "C", "D"]
-    const cols = Array.from({ length: 10 }, (_, i) => i + 1)
+    const rowsTop = ["A", "B"] // Top side (2 seats per column)
+    const rowsBottom = ["C", "D"] // Bottom side (2 seats per column)
+    const backRowSeats = ["A", "B", "C", "D"] // Back row (4 seats in column 11, aligned with A to D)
+    const columns = Array.from({ length: 10 }, (_, i) => i + 1) // 10 columns for paired seats (1 to 10)
+    const backColumn = 11 // Last column for the back row (column 11)
 
     return (
-      <div className="flex flex-col space-y-2">
-        <div className="relative w-full h-10 mb-4 bg-[#E0E0E0] rounded-t-lg flex items-center justify-center">
-          <span className="text-sm font-medium">Driver</span>
-        </div>
+      <div className="flex flex-col items-center w-full">
+        {/* Main seat layout */}
+        <div className="flex flex-row space-x-6 justify-center">
+          {/* Driver area on the left */}
+          <div className="relative h-full w-10 bg-[#E0E0E0] rounded-l-lg flex items-center justify-center">
+            <span className="text-sm font-medium -rotate-90 whitespace-nowrap">Driver</span>
+          </div>
 
-        <div className="grid grid-cols-5 gap-2">
-          {rows.map((row) =>
-            cols.map((col) => {
-              const seat = `${row}${col}`
-              const isSelected = localSelectedSeats.includes(seat)
-              const isOccupied = occupiedSeats.includes(seat)
+          <div className="flex flex-row space-x-6">
+            {columns.map((col) => (
+              <div key={col} className="flex flex-col space-y-2">
+                {/* Top side: 2 seats (rows A and B) */}
+                <div className="flex flex-col space-y-2">
+                  {rowsTop.map((row) => {
+                    const seat = `${row}${col}`
+                    const isSelected = localSelectedSeats.includes(seat)
+                    const isOccupied = occupiedSeats.includes(seat)
 
-              // Add aisle after every 2 seats
-              const isAisle = col === 2 || col === 8
-
-              return (
-                <div key={seat} className={cn("flex items-center justify-center", isAisle && "col-span-1")}>
-                  {isAisle ? (
-                    <div className="w-4"></div>
-                  ) : (
-                    <button
-                      type="button"
-                      className={cn(
-                        "w-8 h-8 rounded-md text-xs font-medium flex items-center justify-center transition-colors",
-                        isSelected && "bg-[#2E7D32] text-white",
-                        isOccupied && "bg-gray-300 text-gray-500 cursor-not-allowed",
-                        !isSelected &&
-                          !isOccupied &&
-                          "bg-white border border-[#2E7D32] text-[#2E7D32] hover:bg-[#2E7D32]/10",
-                      )}
-                      onClick={() => !isOccupied && toggleSeat(seat)}
-                      disabled={isOccupied}
-                    >
-                      {seat}
-                    </button>
-                  )}
+                    return (
+                      <button
+                        key={seat}
+                        type="button"
+                        className={cn(
+                          "w-8 h-8 rounded-md text-xs font-medium flex items-center justify-center transition-colors",
+                          isSelected && "bg-[#2E7D32] text-white",
+                          isOccupied && "bg-gray-300 text-gray-500 cursor-not-allowed",
+                          !isSelected &&
+                            !isOccupied &&
+                            "bg-white border border-[#2E7D32] text-[#2E7D32] hover:bg-[#2E7D32]/10",
+                        )}
+                        onClick={() => !isOccupied && toggleSeat(seat)}
+                        disabled={isOccupied}
+                      >
+                        {seat}
+                      </button>
+                    )
+                  })}
                 </div>
-              )
-            }),
-          )}
+
+                {/* Aisle gap */}
+                <div className="h-6"></div>
+
+                {/* Bottom side: 2 seats (rows C and D) */}
+                <div className="flex flex-col space-y-2">
+                  {rowsBottom.map((row) => {
+                    const seat = `${row}${col}`
+                    const isSelected = localSelectedSeats.includes(seat)
+                    const isOccupied = occupiedSeats.includes(seat)
+
+                    return (
+                      <button
+                        key={seat}
+                        type="button"
+                        className={cn(
+                          "w-8 h-8 rounded-md text-xs font-medium flex items-center justify-center transition-colors",
+                          isSelected && "bg-[#2E7D32] text-white",
+                          isOccupied && "bg-gray-300 text-gray-500 cursor-not-allowed",
+                          !isSelected &&
+                            !isOccupied &&
+                            "bg-white border border-[#2E7D32] text-[#2E7D32] hover:bg-[#2E7D32]/10",
+                        )}
+                        onClick={() => !isOccupied && toggleSeat(seat)}
+                        disabled={isOccupied}
+                      >
+                        {seat}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+            ))}
+
+            {/* Back row (column 11, seats A11 to D11) */}
+            <div className="flex flex-col space-y-2">
+              {backRowSeats.map((row) => {
+                const seat = `${row}${backColumn}`
+                const isSelected = localSelectedSeats.includes(seat)
+                const isOccupied = occupiedSeats.includes(seat)
+
+                return (
+                  <button
+                    key={seat}
+                    type="button"
+                    className={cn(
+                      "w-8 h-8 rounded-md text-xs font-medium flex items-center justify-center transition-colors",
+                      isSelected && "bg-[#2E7D32] text-white",
+                      isOccupied && "bg-gray-300 text-gray-500 cursor-not-allowed",
+                      !isSelected &&
+                        !isOccupied &&
+                        "bg-white border border-[#2E7D32] text-[#2E7D32] hover:bg-[#2E7D32]/10",
+                    )}
+                    onClick={() => !isOccupied && toggleSeat(seat)}
+                    disabled={isOccupied}
+                  >
+                    {seat}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
         </div>
 
-        <div className="flex items-center justify-center space-x-6 mt-4">
+        {/* Legend */}
+        <div className="flex flex-row items-center justify-center space-x-6 mt-4">
           <div className="flex items-center">
             <div className="w-4 h-4 rounded-sm bg-white border border-[#2E7D32] mr-2"></div>
             <span className="text-xs">Available</span>

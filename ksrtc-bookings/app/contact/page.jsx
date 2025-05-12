@@ -80,16 +80,16 @@ export default function ContactPage() {
       <Header />
       <main className="flex-1">
         <div className="relative h-64 md:h-80 bg-[#1A237E]">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1A237E] to-[#2E7D32]/80"></div>
-          <div className="container mx-auto px-4 h-full flex items-center">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A237E] to-[#2E7D32] opacity-80"></div>
+          <div className="container mx-auto px-4 h-full flex items-center relative z-10">
             <motion.div
-              className="text-white"
+              className="text-white bg-[#1A237E]/50 backdrop-blur-sm p-6 rounded-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h1 className="text-3xl md:text-5xl font-bold mb-4">Contact Us</h1>
-              <p className="text-lg md:text-xl max-w-2xl">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md">Contact Us</h1>
+              <p className="text-lg md:text-xl max-w-2xl text-white drop-shadow-md">
                 We're here to help. Reach out to us with any questions or feedback.
               </p>
             </motion.div>
@@ -208,15 +208,15 @@ export default function ContactPage() {
                           value={formData.subject}
                           onValueChange={(value) => handleSelectChange("subject", value)}
                         >
-                          <SelectTrigger>
+                          <SelectTrigger className="select-trigger">
                             <SelectValue placeholder="Select subject" />
                           </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="general">General Inquiry</SelectItem>
-                            <SelectItem value="booking">Booking Issue</SelectItem>
-                            <SelectItem value="feedback">Feedback</SelectItem>
-                            <SelectItem value="complaint">Complaint</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
+                          <SelectContent className="select-content">
+                            <SelectItem className="select-item" value="general">General Inquiry</SelectItem>
+                            <SelectItem className="select-item" value="booking">Booking Issue</SelectItem>
+                            <SelectItem className="select-item" value="feedback">Feedback</SelectItem>
+                            <SelectItem className="select-item" value="complaint">Complaint</SelectItem>
+                            <SelectItem className="select-item" value="other">Other</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>

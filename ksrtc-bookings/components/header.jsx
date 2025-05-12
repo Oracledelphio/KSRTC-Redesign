@@ -51,7 +51,7 @@ export function Header() {
   const isHomeAndTop = pathname === "/" && !isScrolled
 
   // Set background color based on page and scroll position
-  const headerBgClass = isHomeAndTop ? "bg-black/30 backdrop-blur-sm" : "bg-white shadow-md"
+  const headerBgClass = isHomeAndTop ? "bg-black/60 backdrop-blur-sm" : "bg-white shadow-md"
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${headerBgClass}`}>
@@ -59,7 +59,7 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <Image src="/images/ksrtc-logo.png" alt="KSRTC Logo" width={50} height={50} className="mr-2" />
+              <Image src="/ksrtc-logo.jpg" alt="KSRTC Logo" width={50} height={50} className="mr-2" />
               <span
                 className={`text-xl font-bold ${isHomeAndTop ? "text-white" : "text-[#2E7D32]"} hidden md:inline-block`}
               >

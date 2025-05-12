@@ -31,16 +31,16 @@ export default function AboutPage() {
       <Header />
       <main className="flex-1">
         <div className="relative h-64 md:h-96 bg-[#1A237E]">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1A237E] to-[#2E7D32]/80"></div>
-          <div className="container mx-auto px-4 h-full flex items-center">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A237E] to-[#2E7D32] opacity-80"></div>
+          <div className="container mx-auto px-4 h-full flex items-center relative z-10">
             <motion.div
-              className="text-white"
+              className="text-white bg-[#1A237E]/50 backdrop-blur-sm p-6 rounded-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h1 className="text-3xl md:text-5xl font-bold mb-4">About Kerala RTC</h1>
-              <p className="text-lg md:text-xl max-w-2xl">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md">About Kerala RTC</h1>
+              <p className="text-lg md:text-xl max-w-2xl text-white drop-shadow-md">
                 Connecting Kerala with safe, reliable, and comfortable transportation since 1965.
               </p>
             </motion.div>

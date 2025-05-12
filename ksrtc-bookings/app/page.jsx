@@ -83,8 +83,18 @@ function VideoHero() {
     <div className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
-        <div className="w-full h-full bg-gradient-to-r from-[#1A237E] to-[#2E7D32] opacity-80"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          onLoadedData={() => setIsVideoLoaded(true)}
+        >
+          <source src="/kerala-vid.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
       </div>
 
       {/* Content */}
@@ -104,7 +114,7 @@ function VideoHero() {
 
           <motion.div
             variants={itemVariants}
-            className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg border border-white/20"
+            className="bg-white/20 backdrop-blur-md p-6 rounded-xl shadow-lg border border-white/20"
           >
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="space-y-2">
@@ -175,7 +185,7 @@ function VideoHero() {
           <motion.div variants={itemVariants} className="mt-8 flex justify-center space-x-6">
             <div className="flex items-center">
               <MapPin className="h-5 w-5 mr-2 text-[#FFB300]" />
-              <span className="text-sm md:text-base">45+ Districts</span>
+              <span className="text-sm md:text-base">14 Districts</span>
             </div>
             <div className="flex items-center">
               <svg

@@ -4,10 +4,11 @@ module.exports = {
   content: [
     "./pages/**/*.{js,jsx}",
     "./components/**/*.{js,jsx}",
+    "./components/ui/**/*.{js,jsx,ts,tsx,mdx}", // Explicitly include UI components
     "./app/**/*.{js,jsx}",
     "./src/**/*.{js,jsx}",
-    "*.{js,jsx,mdx}",
-    "*.{js,ts,jsx,tsx,mdx}",
+    "./*.{js,jsx,mdx}",
+    "./*.{js,ts,jsx,tsx,mdx}",
   ],
   prefix: "",
   theme: {
@@ -26,15 +27,18 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#2E7D32", // Emerald Green
+          DEFAULT: "hsl(var(--primary))", // Use CSS variable to align with globals.css
+          500: "#2E7D32", // Emerald Green as a specific shade
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#FFB300", // Warm Gold
+          DEFAULT: "hsl(var(--secondary))", // Use CSS variable
+          500: "#FFB300", // Warm Gold as a specific shade
           foreground: "hsl(var(--secondary-foreground))",
         },
         accent: {
-          DEFAULT: "#1A237E", // Deep Blue
+          DEFAULT: "hsl(var(--accent))", // Use CSS variable
+          500: "#1A237E", // Deep Blue as a specific shade
           foreground: "hsl(var(--accent-foreground))",
         },
         destructive: {
@@ -76,4 +80,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
