@@ -263,7 +263,7 @@ function PopularRoutes() {
       id: 1,
       from: "Thiruvananthapuram",
       to: "Kochi",
-      image: "/images/kochi.jpg",
+      image: "/Thiruvananthapuram.jpg",
       price: "₹750",
       duration: "6h 00m",
     },
@@ -271,7 +271,7 @@ function PopularRoutes() {
       id: 2,
       from: "Kochi",
       to: "Kozhikode",
-      image: "/images/kozhikode.jpg",
+      image: "/kochi.jpg",
       price: "₹850",
       duration: "6h 30m",
     },
@@ -279,7 +279,7 @@ function PopularRoutes() {
       id: 3,
       from: "Thiruvananthapuram",
       to: "Munnar",
-      image: "/images/munnar.jpg",
+      image: "/munnar.jpg",
       price: "₹950",
       duration: "8h 15m",
     },
@@ -287,7 +287,7 @@ function PopularRoutes() {
       id: 4,
       from: "Kochi",
       to: "Alappuzha",
-      image: "/images/alappuzha.jpg",
+      image: "/alappuzha.jpg",
       price: "₹350",
       duration: "2h 30m",
     },
@@ -749,7 +749,7 @@ function AppPromotion() {
           >
             <div className="relative mx-auto w-64 md:w-80">
               <Image
-                src="/placeholder.svg?height=640&width=320"
+                src="/mobile-view.png?height=640&width=320"
                 alt="KSRTC Mobile App"
                 width={320}
                 height={640}

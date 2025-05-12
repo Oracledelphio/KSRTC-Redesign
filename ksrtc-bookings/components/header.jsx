@@ -200,7 +200,7 @@ export function Header() {
                   size="sm"
                   className={`hidden md:flex items-center ${
                     isHomeAndTop
-                      ? "border-white text-white hover:bg-white hover:text-[#2E7D32]"
+                      ? "border-[#2E7D32] text-[#2E7D32] hover:bg-[#2E7D32] hover:text-white"
                       : "border-[#2E7D32] text-[#2E7D32] hover:bg-[#2E7D32] hover:text-white"
                   }`}
                 >
