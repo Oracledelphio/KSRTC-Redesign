@@ -16,7 +16,7 @@ export function PromotionBanner() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-white rounded-lg overflow-hidden shadow-md border border-[#E0E0E0] flex">
           <div className="w-1/3 relative">
-            <Image src="/images/city-circular.png" alt="City Circular Service" fill className="object-cover" />
+            <Image src="/bus-circular.jpg" alt="City Circular Service" fill className="object-cover" />
           </div>
           <div className="w-2/3 p-4">
             <h3 className="font-bold text-[#1A237E]">City Circular Service</h3>
@@ -29,7 +29,7 @@ export function PromotionBanner() {
 
         <div className="bg-white rounded-lg overflow-hidden shadow-md border border-[#E0E0E0] flex">
           <div className="w-1/3 relative">
-            <Image src="/images/premium-service.png" alt="Premium Service" fill className="object-cover" />
+            <Image src="/premium-bus.jpg" alt="Premium Service" fill className="object-cover" />
           </div>
           <div className="w-2/3 p-4">
             <h3 className="font-bold text-[#1A237E]">Premium Services</h3>
