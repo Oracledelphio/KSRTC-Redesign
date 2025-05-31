@@ -23,7 +23,7 @@ const allBusData = [
     availableSeats: 23,
     totalSeats: 40,
     amenities: ["wifi", "charging", "water", "blanket"],
-    image: "/images/volvo-bus.png",
+    image: "./ac-volvo.jpeg",
     discount: "30% OFF",
   },
   {
@@ -54,7 +54,7 @@ const allBusData = [
     availableSeats: 28,
     totalSeats: 40,
     amenities: ["charging", "water"],
-    image: "/images/super-deluxe.png",
+    image: "./super-deluxe.jpg",
   },
   {
     id: 4,
@@ -69,7 +69,7 @@ const allBusData = [
     availableSeats: 32,
     totalSeats: 45,
     amenities: [],
-    image: "/images/non-ac-bus.png",
+    image: "./super-fast.jpg",
   },
   {
     id: 5,
@@ -84,7 +84,7 @@ const allBusData = [
     availableSeats: 18,
     totalSeats: 40,
     amenities: ["wifi", "charging", "water"],
-    image: "/images/volvo-bus.png",
+    image: "./ac-volvo.jpeg"
   },
   {
     id: 6,
@@ -99,7 +99,7 @@ const allBusData = [
     availableSeats: 25,
     totalSeats: 40,
     amenities: ["charging", "water"],
-    image: "/images/super-deluxe.png",
+    image: "./super-deluxe.jpg",
   },
   {
     id: 7,
@@ -114,7 +114,7 @@ const allBusData = [
     availableSeats: 22,
     totalSeats: 36,
     amenities: ["wifi", "charging", "water", "entertainment"],
-    image: "/images/scania-bus.png",
+    image: "./super-fast.jpg",
     discount: "15% OFF",
   },
   {
@@ -130,7 +130,7 @@ const allBusData = [
     availableSeats: 30,
     totalSeats: 45,
     amenities: [],
-    image: "/images/non-ac-bus.png",
+    image: "./super-fast.jpg",
   },
 ]
 
@@ -206,7 +206,7 @@ export function BusListings({ origin, destination, date }) {
           We couldn't find any buses matching your search criteria. Please try different dates or destinations.
         </p>
         <Image
-          src="/placeholder.svg?height=200&width=200"
+          src="./bus-not-found.jpg"
           alt="No buses found"
           width={200}
           height={200}

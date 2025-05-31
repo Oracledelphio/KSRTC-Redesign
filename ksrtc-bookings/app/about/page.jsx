@@ -67,7 +67,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="relative h-64 md:h-80 rounded-lg overflow-hidden shadow-lg">
-              <Image src="/images/ksrtc-history.png" alt="KSRTC History" fill className="object-cover" />
+              <Image src="./historic.jpg" alt="KSRTC History" fill className="object-cover" />
             </div>
           </motion.div>
 
@@ -99,7 +99,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white rounded-lg overflow-hidden shadow-md">
                 <div className="relative h-48">
-                  <Image src="/images/volvo-bus.png" alt="AC Volvo" fill className="object-cover" />
+                  <Image src="./ac-volvo.jpeg" alt="AC Volvo" fill className="object-cover" />
                 </div>
                 <div className="p-4">
                   <h3 className="text-lg font-bold text-[#2E7D32] mb-2">AC Volvo</h3>
@@ -111,7 +111,7 @@ export default function AboutPage() {
               </div>
               <div className="bg-white rounded-lg overflow-hidden shadow-md">
                 <div className="relative h-48">
-                  <Image src="/images/super-deluxe.png" alt="Super Deluxe" fill className="object-cover" />
+                  <Image src="./super-deluxe.jpg" alt="Super Deluxe" fill className="object-cover" />
                 </div>
                 <div className="p-4">
                   <h3 className="text-lg font-bold text-[#2E7D32] mb-2">Super Deluxe</h3>
@@ -122,7 +122,7 @@ export default function AboutPage() {
               </div>
               <div className="bg-white rounded-lg overflow-hidden shadow-md">
                 <div className="relative h-48">
-                  <Image src="/images/non-ac-bus.png" alt="Super Fast" fill className="object-cover" />
+                  <Image src="./super-fast.jpg" alt="Super Fast" fill className="object-cover" />
                 </div>
                 <div className="p-4">
                   <h3 className="text-lg font-bold text-[#2E7D32] mb-2">Super Fast</h3>

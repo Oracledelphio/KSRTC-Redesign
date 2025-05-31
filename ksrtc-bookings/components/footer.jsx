@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center mb-4">
-              <Image src="/images/ksrtc-logo.png" alt="KSRTC Logo" width={50} height={50} className="mr-2" />
+              <Image src="./ksrtc-logo.jpg" alt="KSRTC Logo" width={50} height={50} className="mr-2" />
               <span className="text-xl font-bold">Kerala RTC</span>
             </div>
             <p className="text-sm text-gray-300 mb-4">

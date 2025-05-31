@@ -179,7 +179,7 @@ export default function LoginPage() {
                 onClick={handleGoogleLogin}
                 disabled={isLoading}
               >
-                <Image src="/images/google-logo.png" alt="Google" width={20} height={20} className="mr-2" />
+                <Image src="./google.jpg" alt="Google" width={30} height={30} className="mr-2" />
                 Sign in with Google
               </Button>
 
